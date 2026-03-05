@@ -16,6 +16,11 @@ int main(){
         cont ++;
     }
 
+    // char ch;
+    // while(arq.get(ch){
+    //     cout << ch;
+    // } le caracter por caracter
+
     arq.close();
     cout << "\nForam lidas " << cont << " linhas\n";
 }
