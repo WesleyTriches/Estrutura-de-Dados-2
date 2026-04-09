@@ -25,13 +25,36 @@ namespace bynarytree{
         return std::max(height(root->left), height(root->right)) +1;
     }
 
-    // TODO: usar alguma forma de representação de árvore
-    void show(node *root, int level = 0){
-        if(!root) 
+    // Representação por barras
+    void show(node* root, int level=0)
+    {
+        if (!root){
+            std::cout << std::string(level, '\t') << "∅" << "\n";
             return;
+        }
+
         std::cout << std::string(level, '\t') << root->value << "\n";
-        show(root->left, level +1);
+        if(!root->left && !root->right) return;
+
+        show(root->left, level+1);
         show(root->right, level+1);
+    }
+
+    // Representação por parênteses aninhado
+    void show2(node* root)
+    {
+        if (!root){
+            std::cout << "∅";
+            return;
+        }
+
+        std::cout << "(" << root->value;
+
+        if(root->left || root->right){
+        show2(root->left);
+        show2(root->right);
+        }
+        std::cout << ")";
     }
 } // namespace bynarytree
 
