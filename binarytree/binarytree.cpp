@@ -2,6 +2,7 @@
 #include <string>
 #include <algorithm>
 #include <iostream>
+#include <queue> // FIFO
 
 namespace bynarytree{
     struct node {
@@ -56,6 +57,53 @@ namespace bynarytree{
         }
         std::cout << ")";
     }
+
+    void DFS_preorder(node * root){
+        if(!root) return; // Se a árvore é vazia, retorna
+
+        std::cout << root->value << " "; // visita o nodo (N)
+        DFS_preorder(root->left); // visita a esquerda (L)
+        DFS_preorder(root->right); // visita a direita (R)
+    }
+
+    void DFS_inorder(node * root){
+        if(!root) return; // Se a árvore é vazia, retorna
+
+        DFS_inorder(root->right); // visita a direita (R)
+        std::cout << root->value << " "; // visita o nodo (N)
+        DFS_inorder(root->left); // visita a esquerda (L)
+    }
+
+    void DFS_posorder(node * root){
+        if(!root) return; // Se a árvore é vazia, retorna
+
+        DFS_posorder(root->left); // visita a esquerda (L)
+        DFS_posorder(root->right); // visita a direita (R)
+        std::cout << root->value << " "; // visita o nodo (N)
+    }
+
+    void BFS(node *root){
+        if(!root) return;
+        std::queue<node *> q;
+
+        q.push(root);
+        while(!q.empty()){
+            auto current = q.front(); // consulta quem está na frente da fila
+            std::cout << current->value << " ";
+            if(current->left) q.push(current->left); // filho da esquerda
+            if(current->right) q.push(current->right); // filho da direita
+            q.pop();
+        }
+    }
+
+    void destroy(node *root){
+        if(!root) return;
+
+        destroy(root->left);
+        destroy(root->right);
+        delete(root);
+    }
+
 } // namespace bynarytree
 
 
