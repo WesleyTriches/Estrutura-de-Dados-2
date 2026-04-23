@@ -4,7 +4,7 @@
 #include <iostream>
 #include <queue> // FIFO
 
-namespace bynarytree{
+namespace binarytree{
     struct node {
         std::string value;
         node *left;
@@ -58,30 +58,30 @@ namespace bynarytree{
         std::cout << ")";
     }
 
-    void DFS_preorder(node * root){
-        if(!root) return; // Se a árvore é vazia, retorna
+    void DFS_preorder(node* root){
+        if(!root) return;   // Se a árvore é vazia, retorna
 
-        std::cout << root->value << " "; // visita o nodo (N)
-        DFS_preorder(root->left); // visita a esquerda (L)
-        DFS_preorder(root->right); // visita a direita (R)
+        std::cout << root->value << " ";    // visita o nodo (N)
+        DFS_preorder(root->left);           // Visita esquerda (L)
+        DFS_preorder(root->right);          // Visita esquerda (R)
     }
 
-    void DFS_inorder(node * root){
-        if(!root) return; // Se a árvore é vazia, retorna
+    void DFS_inorder(node* root){
+        if(!root) return;   // Se a árvore é vazia, retorna
 
-        DFS_inorder(root->right); // visita a direita (R)
-        std::cout << root->value << " "; // visita o nodo (N)
-        DFS_inorder(root->left); // visita a esquerda (L)
+        DFS_inorder(root->left);           // Visita esquerda (L)
+        std::cout << root->value << " ";   // visita o nodo (N)
+        DFS_inorder(root->right);          // Visita esquerda (R)
     }
 
-    void DFS_posorder(node * root){
-        if(!root) return; // Se a árvore é vazia, retorna
+    void DFS_postorder(node* root){
+        if(!root) return;   // Se a árvore é vazia, retorna
 
-        DFS_posorder(root->left); // visita a esquerda (L)
-        DFS_posorder(root->right); // visita a direita (R)
-        std::cout << root->value << " "; // visita o nodo (N)
+        DFS_postorder(root->left);           // Visita esquerda (L)
+        DFS_postorder(root->right);          // Visita esquerda (R)
+        std::cout << root->value << " ";    // visita o nodo (N)
     }
-
+     
     void BFS(node *root){
         if(!root) return;
         std::queue<node *> q;
@@ -102,6 +102,20 @@ namespace bynarytree{
         destroy(root->left);
         destroy(root->right);
         delete(root);
+    }
+
+    namespace BST { // arvore binaria de pesquisa
+        void insert(node *&root, const std::string &val){
+            if(!root){
+                root = createnode(val);
+            }
+            else if(root->value > val){
+                insert(root->left, val);
+            }
+            else if(root->value < val){
+                insert(root->right, val);
+            }
+        }
     }
 
 } // namespace bynarytree
