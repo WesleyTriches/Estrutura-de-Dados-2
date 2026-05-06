@@ -81,7 +81,7 @@ namespace binarytree{
         DFS_postorder(root->right);          // Visita esquerda (R)
         std::cout << root->value << " ";    // visita o nodo (N)
     }
-     
+
     void BFS(node *root){
         if(!root) return;
         std::queue<node *> q;

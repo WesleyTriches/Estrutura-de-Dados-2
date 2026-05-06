@@ -19,7 +19,7 @@ int main(){
     DFS_inorder(root);
 
     std::cout << "\nDFS posorder: ";
-    DFS_posorder(root);
+    DFS_postorder(root);
 
     std::cout << "\nBFS: ";
     BFS(root); 

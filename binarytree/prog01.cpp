@@ -1,7 +1,7 @@
 #include "./binarytree.cpp"
 #include <iostream>
 
-using namespace bynarytree;
+using namespace binarytree;
 
 int main(){
     node *root=createnode("A");
@@ -13,5 +13,4 @@ int main(){
 
     std::cout << "Altura: " << height(root) << "\n";
     show(root);
-
 }
